@@ -1,7 +1,22 @@
 import './App.css';
 import Main from './Components/Main';
+import { myData } from './Data/myData';
 
+const NewBlock = () =>{
+return(
+  <>
+  {myData?.map(({name,age,campus,city,id})=>{
+    return <p><Main key={id} name={name} age={age} campus={campus} city={city} /></p>
+  })};
+  </>
+)
+}
 function App() {
+
+  // const mainBlock = myData.map(({name,age,campus,city,id})=>{
+  //   return <p><Main key={id} name={name} age={age} campus={campus} city={city} /></p>
+  // });
+
   return (
     <>
     <div>My name
@@ -11,12 +26,14 @@ function App() {
 
     <p>Udith Jeewapadma</p>
 
-    <Main name="shehan" age="24 years" campus="SLIIT" city="Gampaha">
-      <h4>Wanasingha</h4>
-      <p>I am a children</p>
-    </Main>
+    {/* {myData.map(({name,age,campus,city,id})=>{
+      return <p><Main key={id} name={name} age={age} campus={campus} city={city} /></p>
+    })} */}
 
-    <Main name="udith" age="24 years" campus="SLIIT" city="Gampaha"/>
+    {/* {mainBlock} */}
+
+    <NewBlock />
+
     </>
   );
 }

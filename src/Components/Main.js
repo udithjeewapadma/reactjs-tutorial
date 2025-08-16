@@ -1,4 +1,4 @@
-function Main({children,name,age,campus,city}){
+function Main({name,age,campus,city}){
 
     // const name = "Udith Jeewapadma";
     // const age = "24 years";
@@ -23,7 +23,7 @@ function Main({children,name,age,campus,city}){
                 <li>{city}</li>
 
             </ul>
-            {children}
+            
         </div>
     )
 }
