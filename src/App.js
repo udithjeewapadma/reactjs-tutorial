@@ -2,27 +2,23 @@ import './App.css';
 import Main from './Components/Main';
 import { myData } from './Data/myData';
 
-const NewBlock = () =>{
-return(
-  <>
-  {myData?.map(({name,age,campus,city,id})=>{
-    return <p><Main key={id} name={name} age={age} campus={campus} city={city} /></p>
-  })};
-  </>
-)
-}
+// const NewBlock = () =>{
+// return(
+//   <Fragment>
+//   {myData?.map(({name,age,campus,city,id})=>{
+//     return <p><Main key={id} name={name} age={age} campus={campus} city={city} /></p>
+//   })};
+//   </Fragment>
+// )
+// }
 function App() {
 
-  // const mainBlock = myData.map(({name,age,campus,city,id})=>{
-  //   return <p><Main key={id} name={name} age={age} campus={campus} city={city} /></p>
-  // });
+  const mainBlock = myData.map(({name,age,campus,city,id,image})=>{
+    return <p><Main key={id} name={name} age={age} campus={campus} city={city} image={image} /></p>
+  });
 
   return (
-    <>
-    <div>My name
-      <h1>Udith</h1>
-      <h1>Jeewapadma</h1>
-    </div>
+    <div className='main-container'>
 
     <p>Udith Jeewapadma</p>
 
@@ -30,11 +26,14 @@ function App() {
       return <p><Main key={id} name={name} age={age} campus={campus} city={city} /></p>
     })} */}
 
-    {/* {mainBlock} */}
+    <div className='mainblock-container'>
+      {mainBlock}
+    </div>
+    
 
-    <NewBlock />
+    {/* <NewBlock /> */}
 
-    </>
+    </div>
   );
 }
 

@@ -1,30 +1,20 @@
-function Main({name,age,campus,city}){
 
-    // const name = "Udith Jeewapadma";
-    // const age = "24 years";
-    // const campus = "SLIIT";
-
-    // const myObj = {
-    //     name : `${name}`,
-    //     age: `${age}`,
-    //     campus: `${campus}`,
-    //     city: "Gampaha"
-    // }
-
-    // const {city} = myObj;
+function Main({name,age,campus,city,image}){
     return(
-        <div>
-            This is main component
+        <>
+            <img src={image?`${image}` :
+            `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9us0MxB35Wv3z03TJFrxhub-WyxqpBKAsjQ&s`}
+            alt="dog" />
 
-            <ul>
-                <li>{name}</li>
-                <li>{age} </li>
-                <li>{campus}</li>
-                <li>{city}</li>
-
-            </ul>
-            
-        </div>
+            <div className="details">
+                <h3>{name}</h3>
+                <p>
+                    <span>{age}</span>
+                    <span>{campus}</span>
+                    <span>{city}</span>
+                </p>
+            </div>
+        </>
     )
 }
 
