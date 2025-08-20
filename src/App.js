@@ -1,98 +1,102 @@
-import './App.css';
-import Main from './Components/Main';
-import { myData } from './Data/myData';
-import {useState} from 'react'
+import "./App.css"
+import {useState} from "react"
+import Unit from "./Components/Unit"
 
-// const NewBlock = () =>{
-// return(
-//   <Fragment>
-//   {myData?.map(({name,age,campus,city,id})=>{
-//     return <p><Main key={id} name={name} age={age} campus={campus} city={city} /></p>
-//   })};
-//   </Fragment>
-// )
-// }
+const App = () =>{
 
-function App() {
+  const [imageUrl,setImageUrl] = useState('')
+  const [name,setName] = useState('')
+  const [age,setAge] = useState('')
+  const [campus,setCampus] = useState('')
+  const [city,setCity] = useState('')
 
+  const [myData,setMyData] = useState([])
 
-const [inputVal,setInputVal] = useState(0)
-
-const clickHandler = () =>{
-  setTimeout(() => {
-    console.log("clicked")
-    setInputVal((pre) => {
-      if(pre<1){
-        return pre + 1
-      }else if(pre<2){
-        return pre +3
-      }else{
-        return pre +2
-      }
-    })
-  },2000)
-}
-console.log(inputVal)
-
-  const mainBlock = myData.map(({name,age,campus,city,id,image}, index)=>{
-    return <p><Main key={id + index} name={name} age={age} campus={campus} city={city} image={image} /></p>
-  });
-
-  const inputHandler = (event,data) =>{
-    event.preventDefault()
-    console.log(data)
-    setInputVal(event.target.value)
-  }
-
-  return (
-    <div className='main-container'>
-
-      <div>
-        <h1>
-          {inputVal}
-        </h1>
-      </div>
-
-    <p>Udith Jeewapadma</p>
-
-    {/* {myData.map(({name,age,campus,city,id})=>{
-      return <p><Main key={id} name={name} age={age} campus={campus} city={city} /></p>
-    })} */}
-
-    <div className='mainblock-container'>
-      {mainBlock}
-    </div>
-
-    <br></br >
-    <button style={
+return(
+  <div className="main_container">
+    <div className="main_left">
+      <input type="text" value={imageUrl} onChange={(e) => {
+        e.preventDefault()
+        setImageUrl(e.target.value)
+      }}/>
+      <input type="text" value={name} onChange={(e) => {
+        e.preventDefault()
+        setName(e.target.value)
+      }}/>
+      <input type="text" value={age} onChange={(e) => {
+        e.preventDefault()
+        setAge(e.target.value)
+      }}/>
+      <input type="text" value={campus} onChange={(e) => {
+        e.preventDefault()
+        setCampus(e.target.value)
+      }}/>
+      <input type="text" value={city} onChange={(e) => {
+        e.preventDefault()
+        setCity(e.target.value)
+      }}/>
+      <button onClick={() => 
       {
-        fontSize:'12px',
-        border:'1px solid red',
-        padding:'7px 12px'
+        setMyData(pre=>{
+          return [...pre,{
+            image: imageUrl,
+            name,
+            age,
+            campus,
+            city
+          }]
+        })
+
+        setImageUrl((pre) => {
+          if(pre.length>0){
+            return "";
+          }else{
+            return pre;
+          }
+        });
+
+        setName((pre) => {
+          if(pre.length>0){
+            return "";
+          }else{
+            return pre;
+          }
+        });
+
+        setAge((pre) => {
+          if(pre.length>0){
+            return "";
+          }else{
+            return pre;
+          }
+        });
+        
+        setCampus((pre) => {
+          if(pre.length>0){
+            return "";
+          }else{
+            return pre;
+          }
+        });
+        
+        setCity((pre) => {
+          if(pre.length>0){
+            return "";
+          }else{
+            return pre;
+          }
+        });
+
       }
-    }
-    onClick={clickHandler}
-    >Click me</button>
-    
-
-    {/* <NewBlock /> */}
-
-    <br /> <br/>
-    <input style={{
-      border : "1px solid purple",
-      fontSize: "14px",
-      padding: "7px"
-    }} 
-    type='text'
-    placeholder='type anything'
-
-    onChange={(e) => {
-      inputHandler(e, inputVal)
-    }}
-     />
-
+      }>Submit</button>
     </div>
-  );
+    <div className="main_right">
+      {myData?.map(({image,name,age,campus,city},index) =>
+      <Unit image={image} name={name} age={age} campus={campus} city={city} key={index}/>
+      )}
+    </div>
+  </div>
+)
 }
 
 export default App;
