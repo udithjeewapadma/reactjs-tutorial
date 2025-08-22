@@ -1,6 +1,7 @@
 import "./App.css"
-import {useState} from "react"
+import {Fragment, useState} from "react"
 import Unit from "./Components/Unit"
+import Header from "./Components/Header"
 
 const App = () =>{
 
@@ -23,6 +24,8 @@ const App = () =>{
   const [myData,setMyData] = useState([])
 
 return(
+  <Fragment>
+    <Header />
   <div className="main_container">
     <div className="main_left">
 
@@ -142,6 +145,7 @@ return(
       )}
     </div>
   </div>
+  </Fragment>
 )
 }
 
