@@ -1,7 +1,8 @@
 import "./App.css"
-import {Fragment, useState} from "react"
+import {Fragment, useEffect, useState} from "react"
 import Unit from "./Components/Unit"
 import Header from "./Components/Header"
+import win from "global"
 
 const App = () =>{
 
@@ -21,12 +22,29 @@ const App = () =>{
 
   })
 
-  const [myData,setMyData] = useState([])
+  const [myData,setMyData] = useState([]);
+
+  const [windowWidth,setWindowWidth] = useState(window.innerWidth)
+
+  const changeWindowWidth = () => {
+    setWindowWidth(window.innerWidth)
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', changeWindowWidth());
+    console.log("use effect..")
+
+    return () =>{
+      console.log("use effect cleanup fun")
+      window.removeEventListener('resize',changeWindowWidth)
+    }
+  },[inputData.name])
 
 return(
   <Fragment>
     <Header />
   <div className="main_container">
+    <h1>{windowWidth}</h1>
     <div className="main_left">
 
       <input type="text" value={inputData.imageUrl} placeholder="Enter imageUrl" onChange={(e) => {
